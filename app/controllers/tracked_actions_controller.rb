@@ -1,0 +1,2 @@
+class TrackedActionsController < ApplicationController
+end
