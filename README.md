@@ -1,11 +1,10 @@
-# event-crawler
-Application that pulls and exposes events from multiple sources.
+# link-tracker
+Application creates email tracking links, which when embedded into an email, track if they were opened.
 
 ## Setup
 ### With Docker
-- Build: `docker-compose build`
-- Start containers: `docker-compose up -d`
-- Exec into container: `docker exec -it event-scraper_web_1 bash`
+- Start containers: `docker-compose up --build`
+- Exec into container: `docker exec -it link-tracker_web_1 bash`
 
 Set up inside container:
 ```
