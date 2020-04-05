@@ -68,3 +68,6 @@ Example request body:
 Route `GET api/tracked_action/opened/:message_id` logs that the user has opened an email.
 Params:
 - `message_id` - emails are identifiable by unique RFC822 message-ids
+
+#### Manual test
+If you use Postman, you can import the collection in this repo (link-tracker.postman_collection.json) and test the endpoints yourself.

@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "6fc739da-3979-4256-a4ca-58b71437bf92",
+		"name": "link-tracker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST api/tracking-links",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"message_id\": \"ABC123\",\n  \"email\": \"ioana.sbob@gmail.com\",\n  \"recipient_email\": \"ioana.sbob+10@gmail.com\",\n  \"subject\": \"Lorem ipsum dolor sit amet\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/tracking_links",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"tracking_links"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET api/tracked_actions/opened",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/tracked_actions/opened/ABC123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"tracked_actions",
+						"opened",
+						"ABC123"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
