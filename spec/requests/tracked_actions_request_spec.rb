@@ -8,11 +8,17 @@ RSpec.describe 'Tracked Action', type: :request do
 
     context 'with existing tracking link' do
       before { get "/api/tracked_actions/opened/#{tracking_link.message_id}" }
-     
+
       let(:tracking_link) { create(:tracking_link) }
 
       it 'returns tracked action' do
-        expect(json_response[:data][:tracked_action]).to include({action: "opened"})
+        tracked_action_params = {
+          action: 'opened',
+          user_agent: nil,
+          client_ip_address: '127.0.0.1'
+        }
+
+        expect(json_response[:data][:tracked_action]).to include(tracked_action_params)
       end
 
       it 'creates an appropriate tracked action ling record' do
@@ -25,7 +31,7 @@ RSpec.describe 'Tracked Action', type: :request do
     end
 
     context 'with inexisting tracking link' do
-      before { get "/api/tracked_actions/opened/bad-msg-id" }
+      before { get '/api/tracked_actions/opened/bad-msg-id' }
 
       it 'returns error' do
         expect(json_response[:data][:error]).to match(/tracking link/)
