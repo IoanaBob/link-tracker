@@ -15,7 +15,7 @@ RSpec.describe 'Tracking Link', type: :request do
     end
     let(:email) { "email1@gmail.com"} 
     let(:recipient_email) { "email2@gmail.com"} 
-    let(:expected_tracking_link) { "http://www.example.com/api/tracked_actions/persist/ABC123" }
+    let(:expected_tracking_link) { "http://www.example.com/api/tracked_actions/opened/ABC123" }
 
     context 'with existing user' do
       before do

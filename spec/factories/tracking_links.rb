@@ -2,9 +2,9 @@
 
 FactoryBot.define do
   factory :tracking_link do
-    remote_identifier { "some-id-#{SecureRandom.uuid}" }
+    message_id { "some-id-#{SecureRandom.uuid}" }
     recipient_email { 'other-email@email.com' }
     subject { 'Lorem ipsum dolor sit amet' }
-    user { build(:user) }
+    user { create(:user) }
   end
 end
