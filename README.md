@@ -1,24 +1,70 @@
-# README
+# event-crawler
+Application that pulls and exposes events from multiple sources.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
+### With Docker
+- Build: `docker-compose build`
+- Start containers: `docker-compose up -d`
+- Exec into container: `docker exec -it event-scraper_web_1 bash`
 
-Things you may want to cover:
+Set up inside container:
+```
+# create and migrate database
+rake db:create
+rake db:migrate
 
-* Ruby version
+# run tests
+rspec
+```
 
-* System dependencies
+### Locally
+Dependencies
+- Ruby version: 2.7.1
+- Postgres
 
-* Configuration
+Install the gems
+```
+bundle
+```
 
-* Database creation
+Create and migrate the DB
+```
+rake db:create
+rake db:migrate
+```
 
-* Database initialization
+Run the tests
+```
+bundle exec rspec
+```
 
-* How to run the test suite
+Start the server
+```
+rails s
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+### API
+Server: Local access at `http://localhost:3000/`
 
-* Deployment instructions
+Route `POST api/tracking_links` creates a tracking link for a given message.
+Usage: Should be called before sending an email. Embed the link in the response into the email.
+Query params:
+- `message_id` (required)
+- `recipient_email`
+- `subject`
+- `user_id`
 
-* ...
+Example request body:
+```
+{
+  message_id: "ABC123",
+  email: email,
+  recipient_email: recipient_email,
+  subject: "blabla"
+}
+```
+
+-----------
+Route `GET api/tracked_action/opened/:message_id` logs that the user has opened an email.
+Params:
+- `message_id` - emails are identifiable by unique RFC822 message-ids
