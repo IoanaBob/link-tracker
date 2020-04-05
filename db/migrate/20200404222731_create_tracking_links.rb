@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateTrackingLinks < ActiveRecord::Migration[6.0]
   def change
     create_table :tracking_links do |t|

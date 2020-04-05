@@ -7,15 +7,15 @@ RSpec.describe 'Tracking Link', type: :request do
     let(:json_response) { JSON.parse(response.body).deep_symbolize_keys }
     let(:params) do
       {
-        message_id: "ABC123",
+        message_id: 'ABC123',
         email: email,
         recipient_email: recipient_email,
-        subject: "blabla"
+        subject: 'blabla'
       }
     end
-    let(:email) { "email1@gmail.com"} 
-    let(:recipient_email) { "email2@gmail.com"} 
-    let(:expected_tracking_link) { "http://www.example.com/api/tracked_actions/opened/ABC123" }
+    let(:email) { 'email1@gmail.com' }
+    let(:recipient_email) { 'email2@gmail.com' }
+    let(:expected_tracking_link) { 'http://www.example.com/api/tracked_actions/opened/ABC123' }
 
     context 'with existing user' do
       before do
